@@ -6,7 +6,6 @@ namespace BookLibraryApi.Models.DTOs
         public string? Author {get;set;}
         public string? ISBN {get;set;}
         public int? Year {get;set;}
-        public bool? IsAvailable {get;set;}
     }
 
 }
