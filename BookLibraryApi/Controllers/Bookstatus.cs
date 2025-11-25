@@ -41,11 +41,6 @@ namespace BookLibraryApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Book> CreateBookStatus([FromBody] CreateBookStatusDTO bookstatusDto)
         {
-            if (string.IsNullOrWhiteSpace(bookstatusDto.ISBN))
-            {
-                return BadRequest(new { message = "Bokstatus ISBN krävs." });
-            }
-
             var bookstatus = new BookStatus(_status: bookstatusDto.Status, _ISBN: bookstatusDto.ISBN, _bookstatusId: Guid.NewGuid().ToString());
 
             _bookstatuses.Add(bookstatus);
@@ -73,12 +68,8 @@ namespace BookLibraryApi.Controllers
             }
 
             // Uppdatera endast angivna fält
-            // if (updateDto.ISBN != null) book.Title = updateDto.Title;
-            // if (updateDto.Author != null) book.Author = updateDto.Author;
             if (updateDto.ISBN != null) bookstatus.ISBN = updateDto.ISBN;
             if (updateDto.Status != null) bookstatus.Status = (bool)updateDto.Status;
-            // if (updateDto.IsAvailable.HasValue) book.IsAvailable = updateDto.IsAvailable.Value;
-
             return Ok(bookstatus);
         }
 
