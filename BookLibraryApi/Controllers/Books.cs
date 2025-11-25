@@ -30,10 +30,6 @@ namespace BookLibraryApi.Controllers
         {
             var book = _books.FirstOrDefault(b => b.ISBN == _isbn);
 
-            if (book == null)
-            {
-                return NotFound(new { message = $"Bok med ISBN {_isbn} hittades inte" });
-            }
 
             return Ok(book);
         }
@@ -43,11 +39,7 @@ namespace BookLibraryApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Book> CreateBook([FromBody] CreateBookDTO bookDto)
         {
-            if (string.IsNullOrWhiteSpace(bookDto.Title) ||
-                string.IsNullOrWhiteSpace(bookDto.Author))
-            {
-                return BadRequest(new { message = "Titel och Författare krävs" });
-            }
+        
 
             var book = new Book(_title: bookDto.Title, _author: bookDto.Author, _ISBN: bookDto.ISBN, _year: bookDto.Year);
 
@@ -70,10 +62,6 @@ namespace BookLibraryApi.Controllers
         {
             var book = _books.FirstOrDefault(b => b.ISBN == _isbn);
 
-            if (book == null)
-            {
-                return NotFound(new { message = $"Bok med ISBN {_isbn} hittades inte" });
-            }
 
             // Uppdatera endast angivna fält
             if (updateDto.Title != null) book.Title = updateDto.Title;
@@ -95,10 +83,6 @@ namespace BookLibraryApi.Controllers
         {
             var book = _books.FirstOrDefault(b => b.ISBN == _isbn);
 
-            if (book == null)
-            {
-                return NotFound(new { message = $"Bok med ISBN {_isbn} hittades inte" });
-            }
 
             _books.Remove(book);
             return NoContent();
