@@ -35,3 +35,39 @@ Accept: application/json
 }
 
 ###
+
+//bookstatuses
+
+GET {{BookLibraryApi_HostAddress}}/api/bookstatuses
+Accept: application/json
+
+###
+
+GET {{BookLibraryApi_HostAddress}}/api/bookstatuses/231609as8d7212io
+Accept: application/json
+
+###
+
+POST {{BookLibraryApi_HostAddress}}/api/bookstatuses
+Content-Type: application/json
+Accept: application/json
+
+{
+  "isbn": "978-0132350884",
+  "status": false
+}
+
+###
+
+
+PATCH  {{BookLibraryApi_HostAddress}}/api/bookstatuses/231609as8d7212io
+Content-Type: application/json
+Accept: application/json
+
+{
+  "bookstatusId": "231609as8d7212io",
+  "isbn": "978-8132350884",
+  "status": true
+}
+
+###
