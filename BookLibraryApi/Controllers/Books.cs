@@ -23,7 +23,7 @@ namespace BookLibraryApi.Controllers
         {
             return Ok(_books);
         }
-
+        [Route("{_isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Book> GetBook(string _isbn)
