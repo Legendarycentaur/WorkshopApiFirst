@@ -9,3 +9,29 @@ GET {{BookLibraryApi_HostAddress}}/api/books/978-0132350884
 Accept: application/json
 
 ###
+
+POST {{BookLibraryApi_HostAddress}}/api/books
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title":"Harry potter And the sorcerers stone",
+    "author":"Jk Rowling",
+    "isbn":"962-12371204",
+    "year":2000
+}
+
+###
+
+
+PATCH  {{BookLibraryApi_HostAddress}}/api/books/962-12371204
+Content-Type: application/json
+Accept: application/json
+
+{
+    "title":"Harry potter And the sorcerers stones",
+    "author":"Jk Rowling and someone else maybe",
+    "year":2002
+}
+
+###
